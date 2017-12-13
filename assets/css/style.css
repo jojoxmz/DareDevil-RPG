@@ -1,3 +1,18 @@
 body{
-	background: pink;
+	background: black;
+	text-align: center;
+	color: white;
 }
+
+
+.main-container{
+	margin: 0 auto;
+	width: 1500px;
+	height: 740px;
+	background-image:url("../../assets/images/newyork.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+	
