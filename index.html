@@ -4,10 +4,7 @@
 	<title>RPG Game</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	
-	<script src="https://code.jquery.com/jquery.js"></script>
-
-
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
 </head>
 <body>
@@ -19,6 +16,8 @@
 	</div>
 
 	<div class="your-characters">
+		<h2>Select Your Character</h2>
+
 		<span class="your-characters-image your-available-characters" id="daredevil-character">
 			<p>Daredevil</p>
 			<img src="./assets/images/daredevil.jpg" alt="daredevil" width="200px">
@@ -31,7 +30,7 @@
 			<p class= "health">130</p>
 		</span>
 
-		<span class= "your-characters-image your-available-characters" id="punisher-characher">
+		<span class= "your-characters-image your-available-characters" id="punisher-character">
 			<p>Punisher</p>
 			<img src="./assets/images/thepunisher.png" alt="punisher" width="200px">
 			<p class= "health">100</p>
@@ -47,12 +46,10 @@
 
 	<div id="chosen-characters-container">
 			<h2>Your Characters</h2>
-			<span id="chosen-characters"></span>
 	</div>
 
 	<div id="enemies-container">
 			<h2>Enemies Available To Attack</h2>
-			<span id="chosen-enemies"></span>
 	</div>
 
 	<div id="fight-container">
@@ -64,15 +61,14 @@
 
 	<div id="defender-container">
 			<h2>Defender</h2>
-			<span id="chosen-defenders"></span>
 	</div>
 
 	<div id="message-container">
-			<span id="game-message"></span>
 			<button type="button" id="restart">Restart</button>
 	</div>
 
 </div>
+
 
 <script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>

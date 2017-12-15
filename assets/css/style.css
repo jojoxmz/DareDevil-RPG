@@ -44,7 +44,7 @@ h2{
 }
 
 #chosen-characters-container{
-	height: 200px;
+	height: 215px;
 }
 
 .chosen-characters{
@@ -56,7 +56,7 @@ h2{
 	height: 280px;
 }
 
-.chosen-enemies{
+#enemies-container{
 	border-color: white
 	background-color: blue;
 }
