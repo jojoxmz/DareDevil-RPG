@@ -171,21 +171,21 @@ $(document).ready(function() {
 
     if (playerSelected && defenderSelected && gameOver === false){
 
-    	if (character.health > 0){
-    		character.attack = character.attack + character.baseAttackPower;
-		$('#message-container').html('You have attacked ' + defenders.name + ' with ' + character.attack + ' points.');
+    	if (('chosen-characters-container').health >= 0){
+    		('.chosen-characters-container').attack = ('.chosen-characters-container').attack + ('.chosen-characters-container').baseAttackPower;
+		$('#message-container').html('You have attacked ' + ('.defender-character').name + ' with ' + ('.chosen-characters-container').attack + ' points.');
 
-    	character.health = character.health - defenders.health;
-    	$('.health').html(character.health);
+    	('.chosen-characters-container').health = ('.chosen-characters-container').health - ('.defender-character').attack;
+    	$('.health').html(('.chosen-characters-container').health);
 
-    	defenders.health = defenders.health - character.attack;
-    	$('.health').html(defenders.health);
+    	('.defender-character').health = ('.defender-character').health - ('.chosen-characters-container').attack;
+    	$('.health').html(('.defender-character').health);
 
 	 	
 
-    	if(character.health <= 0){
+    	if(('.chosen-characters-container').health <= 0){
     		('#message-container').html('You have died!');
-    	} else if (defenders.health <= 0){
+    	} else if (('.defender-character').health <= 0){
     		enemiesDefeated ++;
 
     		if(enemiesDefeated === 3){
