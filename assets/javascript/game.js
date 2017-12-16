@@ -36,6 +36,15 @@ var WilliamFisk = {
 		attack: 8,
 	};
 
+var attacker = {};
+var defender= {};
+var remaining ={};
+
+
+function health(){
+
+};
+
 function settingUpCharacter(chosenCharacter){
 	character.name = chosenCharacter.name;
 	character.health = chosenCharacter.health;
@@ -163,87 +172,11 @@ $(document).ready(function() {
 
 
 	$("#attack-button").on("click", function() {
-    console.log("Attack selected");
+    	console.log("Attack selected");
 
     if (playerSelected === true && defenderSelected === true && gameOver === false){
-    	defenders.health= defenders.health - character.attack;
 
-    	$('.defender.character').children('.health').html(defenders.health);
-    	$("message-container").html("<p>You attacked " + defenders.name + " for " + character.attack + " damage.<p>");
-
-    	character.attack= character.attack - character.baseAttackPower;
-
-    	if(defenders.health > 0){
-    		character.health = character.health - defenderSelected.baseAttackPower;
-    		$('.chosen-characters-container').children('.health').html(character.health);
-
-
-    		if(character.health > 0){
-    			$('#message-container').append("<p>" + defenders.name + " attacked you back for " + defenders.baseAttackPower + " damage.</p>");
-    		} else {
-    			gameOver = true;
-    			$('#message-container').html("<p>You were defeated... </p>");
-    		}
-    	}
-
-    }else {
-    	enemiesDefeated++;
-    	defenderSelected = false;
-    	$('.defender-character').hide();
-
-    	if(enemiesDefeated === 3){
-    		gameOver= true;
-			$('#message-container').html('<p>You won!</p>')
-    	}
-    }
-    
-
-    // // User is ready to attack the defender
-    // if (playerSelected && defenderSelected && !gameOver) {
-    //   // User attacks the defender and decreases the defender's health points
-    //   defenders.health = defenders.health - character.attack;
-    //   $(".defender-character").children(".health").html(defenders.health);
-    //   $("message-container").html("<p>You attacked " + defenders.name + " for " + character.attack + " damage.<p>");
-
-    //   // User's attack power increases
-    //   character.attack = character.attack + character.baseAttack;
-
-    //   // If defender is still alive, they counter attack the user
-    //   if (defenders.health > 0) {
-    //     character.health = character.health - defenders.baseAttack;
-    //     $(".chosen-character").children(".health").html(character.health);
-
-    //     // Check if the user survives the attack
-    //     if (character.health > 0) {
-    //       $("#message-container").append("<p>" + defenders.name + " attacked you back for " + defenders.baseAttack + " damage.</p>");
-    //     } else {
-    //       gameOver = true;
-    //       $("#message-container").html("<p>You were defeated... womp womp...</p><p>Play again?</p>");
-         
-    //     }
-    //   } else {
-    //     // Defender is defeated
-    //     enemiesDefeated++;
-    //     defenderSelected = false;
-    //     $("#message-container").html("<p>You have defeated " + defenders.name + ". Choose another enemy.</p>");
-    //     $(".defender-character").hide();
-
-    //     // Check if the user has won the game
-    //     if (enemiesDefeated === 3) {
-    //       gameOver = true;
-    //       $("message-container").html("<p>You have won the game!!!</p><p>Play again?</p>");
-    //     }
-    //   }
-    // } else if (!playerSelected && !gameOver) {
-    //   $("#message-container").html("<p>You must first select your game character.</p>");
-    // } else if (!defenderSelected && !gameOver) {
-    //   $("#message-container").html("<p>You must choose an enemy to fight.</p>");
-    // }
-
-    // console.log("character = " + JSON.stringify(character));
-    // console.log("defender = " + JSON.stringify(defenders));
- 
-
+    	
 
   });
 
