@@ -36,14 +36,9 @@ var WilliamFisk = {
 		attack: 8,
 	};
 
-var attacker = {};
-var defender= {};
+
 var remaining ={};
 
-
-function health(){
-
-};
 
 function settingUpCharacter(chosenCharacter){
 	character.name = chosenCharacter.name;
@@ -69,7 +64,7 @@ function movingEnemiesToTheirContainer(){
 
 
 $(document).ready(function() {
-	$("#restart").hide();
+	// $("#restart").hide();
 
 	$('#daredevil-character').on('click', function(){
 		console.log("Daredevil has been selected");
@@ -174,9 +169,33 @@ $(document).ready(function() {
 	$("#attack-button").on("click", function() {
     	console.log("Attack selected");
 
-    if (playerSelected === true && defenderSelected === true && gameOver === false){
+    if (playerSelected && defenderSelected && gameOver === false){
 
-    	
+    	if (character.health > 0){
+    		character.attack = character.attack + character.baseAttackPower;
+		$('#message-container').html('You have attacked ' + defenders.name + ' with ' + character.attack + ' points.');
+
+    	character.health = character.health - defenders.health;
+    	$('.health').html(character.health);
+
+    	defenders.health = defenders.health - character.attack;
+    	$('.health').html(defenders.health);
+
+	 	
+
+    	if(character.health <= 0){
+    		('#message-container').html('You have died!');
+    	} else if (defenders.health <= 0){
+    		enemiesDefeated ++;
+
+    		if(enemiesDefeated === 3){
+    			gameOver= true;
+    			$('#message-container').html('You have won!');
+    		}
+    	}
+
+    }
+}
 
   });
 
