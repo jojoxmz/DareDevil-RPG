@@ -1,7 +1,7 @@
 var playerSelected= false;
 var defenderSelected= false;
 
-//storing character
+//storing character and defenders
 var character={};
 var defenders={};
 
@@ -12,33 +12,31 @@ var Characters= {
 	Daredevil: {
 		name: 'Daredevil',
 		health: 150,
-		baseAttackPower: 90,
-		attack: 40,
+		baseAttackPower: 5,
+		attack: 25,
 	},
 
 	Elektra: {
 		name: 'Elektra',
 		health: 130,
-		baseAttackPower: 2,
-		attack: 8,
+		baseAttackPower: 5,
+		attack: 19,
 	},
 
 	Punisher: {
 		name: 'Punisher',
 		health: 100,
-		baseAttackPower: 8,
-		attack: 8,
+		baseAttackPower: 5,
+		attack: 20,
 	},
 
 	WilsonFisk: {
 		name: 'WilsonFisk',
 		health: 150,
-		baseAttackPower: 8,
-		attack: 8,
+		baseAttackPower: 4,
+		attack: 18,
 	}
-
 };
-
 
 function settingUpCharacter(chosenCharacter){
 	character.name = chosenCharacter.name;
@@ -58,52 +56,53 @@ function settingUpDefenders(chosenDefenders){
 }
 
 //moving other characters into enemy container
-
 function movingEnemiesToTheirContainer(){
-	$('.your-available-characters').removeClass('your-available-characters').addClass("enemy-characters");
-	$('#enemies-container').append($(".enemy-characters"));
-	$('.enemy-characters').css("background-color", 'blue');
+	$('.your-available-characters').removeClass('your-available-characters').addClass('enemy-characters');
+	$('#enemies-container').append($('.enemy-characters'));
+	$('.enemy-characters').css('background-colo', 'blue');
+	$('.enemy-characters').css("border", "green solid 1px");
 }
 
-
 $(document).ready(function() {
-	// $("#restart").hide();
 
+	//when a character has been clicked
 	$('#Daredevil').on('click', function(){
 		console.log("Daredevil has been selected");
 
+		//if player have not been selected
 		if(playerSelected === false){
 
+			//set up character information
 			settingUpCharacter(Characters.Daredevil);
 			playerSelected = true;
 
 			//display chosen player
-			$("#Daredevil").removeClass("your-available-characters").addClass("chosen-characters-container");
-			$("#chosen-characters-container").append(this);
+			$('#Daredevil').removeClass('your-available-characters').addClass('chosen-characters-container');
+			$('#chosen-characters-container').append(this);
 		
+			//move rest into the enemies container
 			movingEnemiesToTheirContainer()
 
 		} else if(playerSelected === true && defenderSelected === false){
-			if($("#Daredevil").hasClass("enemy-characters")){
+			if($('#Daredevil').hasClass('enemy-characters')){
 
 				settingUpDefenders(Characters.Daredevil);
 				defenderSelected = true;
 
-				$("#Daredevil").removeClass("enemy-characters").addClass("defender-character");
-				$("#defender-container").append(this);
+				$('#Daredevil').removeClass('enemy-characters').addClass('defender-character');
+				$('#defender-container').append(this);
 				}
 			}
 	});
 
 	$('#Elektra').on('click', function(){
-		console.log("Elektra has been selected");
+		console.log('Elektra has been selected');
 
 		if(playerSelected === false){
 
 			settingUpCharacter(Characters.Elektra);
 			playerSelected = true;
 
-			//display chosen player
 			$('#Elektra').removeClass('your-available-characters').addClass('chosen-characters-container');
 			$('#chosen-characters-container').append(this);
 
@@ -120,9 +119,8 @@ $(document).ready(function() {
 		}
 	});
 
-
 	$('#Punisher').on('click', function(){
-		console.log("Punisher has been selected");
+		console.log('Punisher has been selected');
 
 		if(playerSelected === false){
 
@@ -145,8 +143,8 @@ $(document).ready(function() {
 		}
 	});
 
-	$("#WilsonFisk").on('click', function(){
-		console.log("William Fisk has been selected");
+	$('#WilsonFisk').on('click', function(){
+		console.log('William Fisk has been selected');
 
 		if(playerSelected === false){
 			settingUpCharacter(Characters.WilsonFisk)
@@ -163,68 +161,61 @@ $(document).ready(function() {
 				settingUpDefenders(Characters.WilsonFisk);
 				defenderSelected= true;
 
-				$('WilsonFisk').removeClass('enemy-characters').addClass('defender-character');
+				$('#WilsonFisk').removeClass('enemy-characters').addClass('defender-character');
 				$('#defender-container').append(this);
 			}
 		}
 	});
 
 
-	$("#attack-button").on("click", function() {
-    	console.log("Attack selected");
+	$('#attack-button').on('click', function() {
+    	console.log('Attack selected');
 
-    	
-    if (playerSelected && defenderSelected && gameOver === false){
-    
-// if defender are being attacked by character chosen
+	    if (playerSelected && defenderSelected && gameOver === false){
+	    
+			//defenders health after being attacked by character 
+			defenders.health = defenders.health - character.attack;
 
-		defenders.health = defenders.health - character.attack;
-    	$($(`#${defenders.name} p.health`)[0]).html(defenders.health);
+			//displays and updates defenders health
+	    	$($(`#${defenders.name} p.health`)[0]).html(defenders.health);
+			console.log(defenders.health);
+	    	console.log(playerSelected);
 
+	    	//character attack power is going to increment every time character makes an attack
+	    	character.attack = character.attack + character.baseAttackPower;
+			$('#message-container').html('You have attacked ' + defenders.name + ' with ' + character.attack + ' points. ' + defenders.name + ' have attacked you for ' + defenders.attack + ' points.');
+			console.log(character.health);
 
-		console.log(defenders.health);
-    	console.log(playerSelected);
+			//character health
+	    	character.health = character.health - defenders.attack;
 
+	    	//displays and updates character health
+	    	$($(`#${character.name} p.health`)[0]).html(character.health);
+	    	
+	    	//determine when character dies
+	       	if(character.health <= 0){
+	       		playerSelected= false;
+	    		$('#message-container').html('You have died!');
 
-    	character.attack = character.attack + character.baseAttackPower;
-		$('#message-container').html('You have attacked ' + character.name + ' with ' + character.attack + ' points.');
-		console.log(character.health);
+	    	//determine when defender dies
+	    	} else if (defenders.health <= 0){
+	    		enemiesDefeated ++;
+	    		$('#defender-container').empty();
+	    		defenderSelected = false;
+	   
+	   		//after all 3 defenders die-- game over
+	    		if(enemiesDefeated === 3){
+	    			gameOver= true;
+	    			$('#message-container').html('You have won!');
+	    			return;
+	    		}
+	    	}
+	    }
 
-    	character.health = character.health - defenders.attack;
-    	$($(`#${character.name} p.health`)[0]).html(character.health);
-    	console.log()
+	//closing is for the attack button
+  	});
 
-    	
-       	if(character.health <= 0){
-    		$('#message-container').html('You have died!');
-    	} else if (defenders.health <= 0){
-    		enemiesDefeated ++;
-    		defenderSelected = false;
-
-    		$('#defender-container').empty();
-
-   //  		$('#enemies-container').removeClass('enemy-characters');
-			// $('#defender-container').append(this);
-
-    		if(enemiesDefeated === 3){
-    			gameOver= true;
-    			$('#message-container').html('You have won!');
-    			return;
-    		}
-   		
-    	}
-
-    }
-
-
-  });
-
-
-
-
-
-
-//these are for the beginning
+//closing is for the beginning
 });
 
 
