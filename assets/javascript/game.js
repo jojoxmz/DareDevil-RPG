@@ -14,7 +14,6 @@ var Characters= {
 		health: 150,
 		baseAttackPower: 90,
 		attack: 40,
-		chosen: false,
 	},
 
 	Elektra: {
@@ -22,7 +21,6 @@ var Characters= {
 		health: 130,
 		baseAttackPower: 2,
 		attack: 8,
-		chosen: false,
 	},
 
 	Punisher: {
@@ -30,15 +28,13 @@ var Characters= {
 		health: 100,
 		baseAttackPower: 8,
 		attack: 8,
-		chosen: false,
 	},
 
-	WilliamFisk: {
-		name: 'WilliamFisk',
+	WilsonFisk: {
+		name: 'WilsonFisk',
 		health: 150,
 		baseAttackPower: 8,
 		attack: 8,
-		chosen: false,
 	}
 
 };
@@ -149,25 +145,25 @@ $(document).ready(function() {
 		}
 	});
 
-	$("#WilliamFisk").on('click', function(){
+	$("#WilsonFisk").on('click', function(){
 		console.log("William Fisk has been selected");
 
 		if(playerSelected === false){
-			settingUpCharacter(Characters.WilliamFisk)
+			settingUpCharacter(Characters.WilsonFisk)
 			playerSelected= true;
 
-			$('#WilliamFisk').removeClass('your-available-characters').addClass('chosen-characters-container');
+			$('#WilsonFisk').removeClass('your-available-characters').addClass('chosen-characters-container');
 			$('#chosen-characters-container').append(this);
 
 			movingEnemiesToTheirContainer()
 			console.log(character);
 		} else if (playerSelected === true && defenderSelected === false){
-			if($('#WilliamFisk').hasClass('enemy-characters')){
+			if($('#WilsonFisk').hasClass('enemy-characters')){
 
-				settingUpDefenders(Characters.WilliamFisk);
+				settingUpDefenders(Characters.WilsonFisk);
 				defenderSelected= true;
 
-				$('WilliamFisk').removeClass('enemy-characters').addClass('defender-character');
+				$('WilsonFisk').removeClass('enemy-characters').addClass('defender-character');
 				$('#defender-container').append(this);
 			}
 		}
@@ -215,19 +211,7 @@ $(document).ready(function() {
     			$('#message-container').html('You have won!');
     			return;
     		}
-
-
-    		//remove current enemy
-
-
-
-
-    		//add new enemy
-
-    		//start fight again
-
-
-    		
+   		
     	}
 
     }
