@@ -1,18 +1,21 @@
 body{
-	background-image:url("../../assets/images/building2.jpeg");
-    background-repeat: repeat;
+	background-image:url("../../assets/images/building2.jpg");
+    background-repeat: no-repeat;
     background-size: 100%;
 	text-align: center;
+	font-family: 'Rubik Mono One', sans-serif;
+	font-weight: lighter;
 	color: white;
 }
 
 header{
-	text-align: right;
+	text-align: left;
 	font-size: 50px;
+	font-weight: bolder;
 	color: #ab0422;
 	font-weight: bold;
-/*	padding-right: 40px;
-*/}
+	padding-bottom: 30px;
+}
 
 .main-container{
 	margin: 0 auto;
@@ -22,7 +25,7 @@ header{
 }
 
 h2{
-	font-size: 30px;
+	font-size: 25px;
 }
 
 .your-characters-image{
@@ -33,37 +36,57 @@ h2{
 	background-color: #ab0422;
 	border: solid;
 	border-color: black;
+	border-radius: 10%;
 }
 
-.your-characters-image:hover{	
-	text-decoration: none;
+.your-characters{
+	padding-bottom: 30px;
 }
 
 .your-characters-image p{
 	text-align: center;
-	font-size: 18px;
+	font-size: 17px;
 	margin: 0px 2px 0px 2px;
+	font-family: 'Didact Gothic', sans-serif;
+	font-weight: bold;
 }
 
 #chosen-characters-container{
-	height: 215px;
+	height: 220px;
+	padding-bottom: 20px;
 }
 
 #defender-container{
-	height: 280px;
+	height: 220px;
+	padding-bottom: 20px;
+}
+
+#enemies-container{
+	padding-bottom: 20px;
+}
+
+#fight-container{
+	padding-bottom: 20px;
 }
 
 .images{
-	filter: grayscale(80%);
+	filter: grayscale(0);
 	transition: .2s ease-in-out;
+	border-radius: 10%;
 }
 
 .images:hover{
-	filter: grayscale(0);
+	filter: grayscale(100%);
 }
 
 #attack-button{
 	padding: 5px;
 	background: green;
 	margin: 10px 0px 10px 0px;
+	border-radius: 10%;
+	font-size: 18px;
+}
+
+#message-container{
+	font-size: 16px;
 }

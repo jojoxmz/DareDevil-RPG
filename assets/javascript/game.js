@@ -59,7 +59,7 @@ function settingUpDefenders(chosenDefenders){
 function movingEnemiesToTheirContainer(){
 	$('.your-available-characters').removeClass('your-available-characters').addClass('enemy-characters');
 	$('#enemies-container').append($('.enemy-characters'));
-	$('.enemy-characters').css({'background': 'black',  'color': 'lightblue', 'border': 'solid grey'});
+	$('.enemy-characters').css({'background': 'black', 'border': 'solid grey', 'color': 'red'});
 }
 
 $(document).ready(function() {
