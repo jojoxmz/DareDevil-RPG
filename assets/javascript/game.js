@@ -59,8 +59,7 @@ function settingUpDefenders(chosenDefenders){
 function movingEnemiesToTheirContainer(){
 	$('.your-available-characters').removeClass('your-available-characters').addClass('enemy-characters');
 	$('#enemies-container').append($('.enemy-characters'));
-	$('.enemy-characters').css('background-colo', 'blue');
-	$('.enemy-characters').css("border", "green solid 1px");
+	$('.enemy-characters').css({'background': 'black',  'color': 'lightblue', 'border': 'solid grey'});
 }
 
 $(document).ready(function() {
@@ -196,6 +195,8 @@ $(document).ready(function() {
 	       	if(character.health <= 0){
 	       		playerSelected= false;
 	    		$('#message-container').html('You have died!');
+
+						
 
 	    	//determine when defender dies
 	    	} else if (defenders.health <= 0){

@@ -1,5 +1,5 @@
 body{
-	background-image:url("../../assets/images/building.jpg");
+	background-image:url("../../assets/images/building2.jpeg");
     background-repeat: repeat;
     background-size: 100%;
 	text-align: center;
@@ -19,7 +19,6 @@ header{
 	width: 1500px;
     margin-top: 20px;
     margin-bottom: 40px;
-    text-align: left;
 }
 
 h2{
@@ -31,15 +30,18 @@ h2{
 	height: 165px;
 	padding: 0px 15px 5px 15px;
 	margin: 4px ;
-	background-color: white;
+	background-color: #ab0422;
 	border: solid;
-	border-color: #ab0422;
+	border-color: black;
+}
+
+.your-characters-image:hover{	
+	text-decoration: none;
 }
 
 .your-characters-image p{
 	text-align: center;
 	font-size: 18px;
-	color: black;
 	margin: 0px 2px 0px 2px;
 }
 
@@ -47,25 +49,21 @@ h2{
 	height: 215px;
 }
 
-.chosen-characters{
-	border-color: white;
-	background-color: red;
-}
-
 #defender-container{
 	height: 280px;
 }
 
-#enemies-container{
-	border-color: white
-	background-color: blue;
+.images{
+	filter: grayscale(80%);
+	transition: .2s ease-in-out;
 }
 
-.chosen-defenders{
-	border-color: white;
-	background-color: orange;
+.images:hover{
+	filter: grayscale(0);
 }
 
-.html{
-	color: white;
+#attack-button{
+	padding: 5px;
+	background: green;
+	margin: 10px 0px 10px 0px;
 }
