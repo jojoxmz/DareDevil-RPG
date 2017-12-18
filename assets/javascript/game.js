@@ -8,11 +8,13 @@ var defenders={};
 var gameOver= false;
 var enemiesDefeated= 0;
 
+var song = new Audio('./assets/images/Song.mp3');
+
 var Characters= {
 	Daredevil: {
 		name: 'Daredevil',
 		health: 150,
-		baseAttackPower: 5,
+		baseAttackPower: 15,
 		attack: 25,
 	},
 
@@ -25,16 +27,16 @@ var Characters= {
 
 	Punisher: {
 		name: 'Punisher',
-		health: 100,
-		baseAttackPower: 5,
+		health: 120,
+		baseAttackPower: 7,
 		attack: 20,
 	},
 
 	WilsonFisk: {
 		name: 'WilsonFisk',
-		health: 150,
+		health: 140,
 		baseAttackPower: 4,
-		attack: 18,
+		attack: 15,
 	}
 };
 
@@ -63,6 +65,8 @@ function movingEnemiesToTheirContainer(){
 }
 
 $(document).ready(function() {
+
+	song.play()
 
 	//when a character has been clicked
 	$('#Daredevil').on('click', function(){
