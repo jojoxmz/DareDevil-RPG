@@ -22,21 +22,21 @@ var Characters= {
 		name: 'Elektra',
 		health: 130,
 		baseAttackPower: 5,
-		attack: 19,
+		attack: 15,
 	},
 
 	Punisher: {
 		name: 'Punisher',
 		health: 120,
-		baseAttackPower: 7,
-		attack: 20,
+		baseAttackPower: 30,
+		attack: 21,
 	},
 
 	WilsonFisk: {
 		name: 'WilsonFisk',
 		health: 140,
 		baseAttackPower: 4,
-		attack: 15,
+		attack: 10,
 	}
 };
 
@@ -82,6 +82,7 @@ $(document).ready(function() {
 			//display chosen player
 			$('#Daredevil').removeClass('your-available-characters').addClass('chosen-characters-container');
 			$('#chosen-characters-container').append(this);
+			$('.your-characters').css('color', 'gray');
 		
 			//move rest into the enemies container
 			movingEnemiesToTheirContainer()
@@ -108,6 +109,7 @@ $(document).ready(function() {
 
 			$('#Elektra').removeClass('your-available-characters').addClass('chosen-characters-container');
 			$('#chosen-characters-container').append(this);
+			$('.your-characters').css('color', 'gray');
 
 			movingEnemiesToTheirContainer()
 		} else if(playerSelected === true && defenderSelected === false){
@@ -132,6 +134,7 @@ $(document).ready(function() {
 
 			$('#Punisher').removeClass('your-available-characters').addClass('chosen-characters-container');
 			$('#chosen-characters-container').append(this);
+			$('.your-characters').css('color', 'gray');
 
 			movingEnemiesToTheirContainer()
 		}else if(playerSelected === true && defenderSelected === false){
@@ -155,6 +158,7 @@ $(document).ready(function() {
 
 			$('#WilsonFisk').removeClass('your-available-characters').addClass('chosen-characters-container');
 			$('#chosen-characters-container').append(this);
+			$('.your-characters').css('color', 'gray');
 
 			movingEnemiesToTheirContainer()
 			console.log(character);
